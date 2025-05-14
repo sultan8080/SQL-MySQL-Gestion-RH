@@ -61,3 +61,4 @@ ASSIGNED_TO, 0N PROJECT_ASSIGNMENT, 11 EMPLOYEE
 
 ![Diagramme MCD](mcd.png)
 
+
