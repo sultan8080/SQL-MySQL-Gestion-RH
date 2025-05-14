@@ -1,0 +1,6 @@
+*.log
+*.swp
+.idea/
+.vscode/
+
+note.txt
