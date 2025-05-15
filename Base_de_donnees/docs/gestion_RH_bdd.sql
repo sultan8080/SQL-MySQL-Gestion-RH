@@ -2,6 +2,8 @@
 CREATE DATABASE IF NOT EXISTS gestion_rh;
 USE gestion_rh;
 
+
+
 -- Création de la table employee
 CREATE TABLE employee (
     employee_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +41,6 @@ CREATE TABLE salary (
     bonus DECIMAL(10,2) DEFAULT 0
 );
 
-
 -- Création de la table leave_request
 CREATE TABLE leave_request (
     leave_request_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,7 +50,6 @@ CREATE TABLE leave_request (
     end_date DATE NOT NULL,
     status VARCHAR(20) NOT NULL
 );
-
 
 -- Création de la table performance_review
 CREATE TABLE performance_review (
@@ -83,7 +83,6 @@ CREATE TABLE project (
     status VARCHAR(20)
 );
 
-
 -- Création de la table project_assignment
 CREATE TABLE project_assignment (
     assignment_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -93,3 +92,45 @@ CREATE TABLE project_assignment (
     start_date DATE,
     end_date DATE
 );
+
+-- Ajout des contraintes de clés étrangères avec ALTER TABLE
+
+-- employee.manager_id réfère employee.employee_id (clé étrangère récursive)
+ALTER TABLE employee
+ADD CONSTRAINT fk_employee_manager FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL;
+
+-- department.manager_id réfère employee.employee_id
+ALTER TABLE department
+ADD CONSTRAINT fk_department_manager FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL;
+
+-- position.department_id réfère department.department_id
+ALTER TABLE position
+ADD CONSTRAINT fk_position_department FOREIGN KEY (department_id) REFERENCES department(department_id) ON DELETE CASCADE;
+
+-- salary.employee_id réfère employee.employee_id
+ALTER TABLE salary
+ADD CONSTRAINT fk_salary_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE;
+
+-- leave_request.employee_id réfère employee.employee_id
+ALTER TABLE leave_request
+ADD CONSTRAINT fk_leave_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE;
+
+-- performance_review.employee_id réfère employee.employee_id
+ALTER TABLE performance_review
+ADD CONSTRAINT fk_review_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE;
+
+-- performance_review.reviewer_id réfère employee.employee_id
+ALTER TABLE performance_review
+ADD CONSTRAINT fk_review_reviewer FOREIGN KEY (reviewer_id) REFERENCES employee(employee_id) ON DELETE SET NULL;
+
+-- training.trainer_id réfère employee.employee_id
+ALTER TABLE training
+ADD CONSTRAINT fk_training_trainer FOREIGN KEY (trainer_id) REFERENCES employee(employee_id) ON DELETE SET NULL;
+
+-- project_assignment.employee_id réfère employee.employee_id
+ALTER TABLE project_assignment
+ADD CONSTRAINT fk_assignment_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE;
+
+-- project_assignment.project_id réfère project.project_id
+ALTER TABLE project_assignment
+ADD CONSTRAINT fk_assignment_project FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE;
