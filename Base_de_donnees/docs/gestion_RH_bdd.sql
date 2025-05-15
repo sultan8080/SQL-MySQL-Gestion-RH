@@ -72,3 +72,17 @@ CREATE TABLE employee (
     FOREIGN KEY (job_role_id) REFERENCES job_role(job_role_id) ON DELETE SET NULL,
     FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Table: attendance
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    check_in_time DATETIME,
+    check_out_time DATETIME,
+    absence_type VARCHAR(100),
+    absence_start_date DATE DEFAULT NULL,
+    absence_end_date DATE DEFAULT NULL,
+    status_id INT DEFAULT 1,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    FOREIGN KEY (status_id) REFERENCES attendance_status(status_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
