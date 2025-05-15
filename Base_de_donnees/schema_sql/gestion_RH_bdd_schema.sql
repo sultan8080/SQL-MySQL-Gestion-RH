@@ -72,3 +72,16 @@ CREATE TABLE leave_request (
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
     CONSTRAINT fk_leave_request_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
 );
+
+
+-- Table performance_review
+CREATE TABLE performance_review (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    review_date DATE NOT NULL,
+    reviewer_id INT,
+    performance_score INT CHECK (performance_score BETWEEN 1 AND 10),
+    comments TEXT,
+    CONSTRAINT fk_performance_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    CONSTRAINT fk_performance_reviewer FOREIGN KEY (reviewer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
+);
