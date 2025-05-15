@@ -123,3 +123,15 @@ CREATE TABLE training (
     end_date DATE NOT NULL,
     FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Table: project
+CREATE TABLE project (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(100),
+    project_description TEXT,
+    budget DECIMAL(12,2),
+    start_date DATE,
+    end_date DATE,
+    status_id INT DEFAULT 2,
+    FOREIGN KEY (status_id) REFERENCES project_status(status_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
