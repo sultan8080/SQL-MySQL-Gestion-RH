@@ -28,6 +28,18 @@ CREATE TABLE department (
 ) ENGINE=InnoDB;
 
 
+
+-- Table: job_role
+CREATE TABLE job_role (
+    job_role_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    department_id INT,
+    min_salary DECIMAL(10,2),
+    max_salary DECIMAL(10,2),
+    FOREIGN KEY (department_id) REFERENCES department(department_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+
 -- Création de la table employee
 CREATE TABLE employee (
     employee_id INT AUTO_INCREMENT PRIMARY KEY,
