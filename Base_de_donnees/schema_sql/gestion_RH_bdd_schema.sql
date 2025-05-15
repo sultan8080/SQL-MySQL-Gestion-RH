@@ -38,3 +38,13 @@ CREATE TABLE employee (
     CONSTRAINT fk_employee_position FOREIGN KEY (position_id) REFERENCES position(position_id) ON DELETE SET NULL,
     CONSTRAINT fk_employee_manager FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL
 );
+
+-- Table salary
+CREATE TABLE salary (
+    salary_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    salary_amount DECIMAL(10,2) NOT NULL,
+    effective_date DATE NOT NULL,
+    bonus DECIMAL(10,2) DEFAULT 0,
+    CONSTRAINT fk_salary_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
+);
