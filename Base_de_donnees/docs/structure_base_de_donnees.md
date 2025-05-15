@@ -1,107 +1,122 @@
 ## Structure de la base de données - Gestion RH
 
-Ce fichier décrit la structure de la base de données pour un système de **Gestion des Ressources Humaines (RH)**. Il présente les différentes entités utilisées pour gérer les employés, leurs informations, et leurs interactions dans le cadre de l'entreprise. Chaque entité est définie avec ses colonnes principales et son objectif dans le système.
-
-### 1. **Employees (Employés)**
+#### 1. **Employees (Employés)**
 **Objectif** : Stocke les détails personnels et professionnels des employés.
-- `id` (Clé primaire) : Identifiant unique de l'employé.
+- `employee_id` (Clé primaire) : Identifiant unique de l'employé.
 - `first_name` : Prénom de l'employé.
 - `last_name` : Nom de famille de l'employé.
 - `email` : Adresse e-mail de l'employé.
 - `phone_number` : Numéro de téléphone de l'employé.
 - `hire_date` : Date d'embauche de l'employé.
-- `date_of_birth` (Date of Birth) : Date de naissance de l'employé.
-- `department_id` : Identifiant du département auquel l'employé est affecté (clé étrangère vers **Departments**).
-- `position_id` : Identifiant du poste de l'employé (clé étrangère vers **Positions**).
-- `salary_id` : Identifiant du salaire actuel de l'employé (clé étrangère vers **Salaries**).
-- `manager_id` : Identifiant du manager de l'employé, s'il y en a un (clé étrangère vers **Employees**, optionnel).
-
-### 2. **Departments (Départements)**
-**Objectif** : Permet de regrouper les employés dans des unités organisationnelles (par exemple, RH, IT, Marketing).
-
-- `id` (Clé primaire) : Identifiant unique du département.
-- `name` : Nom du département (ex. : "Ressources Humaines").
-- `location` : Localisation géographique du département.
-- `manager_id` : Identifiant du responsable du département (clé étrangère vers **Employees**).
+- `date_of_birth` : Date de naissance.
+- `department_id` : Référence vers le département de l'employé.
+- `job_role_id` : Référence vers le poste occupé.
+- `manager_id` : Supérieur hiérarchique (référence vers un autre employé).
 
 
-### 3. **Positions (Postes)**
-**Objectif** : Définit les rôles ou fonctions occupés par les employés au sein des départements.
+#### 2. **Departments (Départements)**
+**Objectif** : Représente les services de l'entreprise (ex : RH, IT, Finance).
+- `department_id` (Clé primaire) : Identifiant unique.
+- `name` : Nom du département.
+- `location` : Localisation.
+- `manager_id` : Employé responsable du département.
 
-- `id` (Clé primaire) : Identifiant unique du poste.
-- `title` : Titre du poste (ex. : "Développeur", "Chef de projet").
-- `department_id` : Identifiant du département auquel appartient le poste (clé étrangère vers **Departments**).
-- `salary_range` : Plage salariale pour ce poste.
+#### 3. **Job Roles (Postes/Rôles)**
+**Objectif** : Décrit les postes occupés dans l'organisation.
+- `job_role_id` (Clé primaire) : Identifiant du poste.
+- `title` : Intitulé du poste.
+- `department_id` : Département associé.
+- `min_salary` : Salaire minimum.
+- `max_salary` : Salaire maximum.
 
-### 4. **Salaries (Salaires)**
-**Objectif** : Suit l'historique des salaires des employés et permet d'effectuer des mises à jour lorsque nécessaire.
+#### 4. **Salaries (Salaires)**
+**Objectif** : Gère l’historique des salaires.
+- `salary_id` (Clé primaire) : Identifiant du salaire.
+- `employee_id` : Employé concerné.
+- `salary_amount` : Montant du salaire.
+- `effective_date` : Date de début d’effet.
+- `effective_end_date` : Fin de validité (si applicable).
+- `bonus` : Bonus éventuel.
 
-- `id` (Clé primaire) : Identifiant unique du salaire.
-- `employee_id` : Identifiant de l'employé concerné (clé étrangère vers **Employees**).
-- `salary_amount` : Montant du salaire de l'employé.
-- `effective_date` : Date d'entrée en vigueur du salaire.
-- `bonus` : Bonus éventuel associé à ce salaire.
-
-### 5. **Attendance (Présence)**
-**Objectif** : Permet de suivre la présence et l'absence des employés sur le lieu de travail.
-- `id` (Clé primaire) : Identifiant unique de l'enregistrement de présence.
-- `employee_id` : Identifiant de l'employé (clé étrangère vers **Employees**).
-- `check_in_time` : Heure d'entrée de l'employé.
-- `check_out_time` : Heure de sortie de l'employé.
-- `absence_type` : Type d'absence (par exemple, "Maladie", "Congé payé").
-- `absence_start_date` : Date de début de l'absence (si applicable).
-- `absence_end_date` : Date de fin de l'absence (si applicable).
-
-
-### 6. **Leave Requests (Demandes de Congé)**
-**Objectif** : Gère les demandes de congé des employés (vacances, maladie, etc.).
-- `id` (Clé primaire) : Identifiant unique de la demande de congé.
-- `employee_id` : Identifiant de l'employé demandant le congé (clé étrangère vers **Employees**).
-- `leave_type` : Type de congé (par exemple, "Congé annuel", "Congé maladie").
-- `start_date` : Date de début du congé.
-- `end_date` : Date de fin du congé.
-- `status` : Statut de la demande (par exemple, "En attente", "Approuvé", "Rejeté").
+#### 5. **Attendance (Présence)**
+**Objectif** : Gère les présences/absences des employés.
+- `attendance_id` : Identifiant unique.
+- `employee_id` : Employé concerné.
+- `check_in_time` : Heure d’arrivée.
+- `check_out_time` : Heure de départ.
+- `absence_type` : Motif d’absence (maladie, congé...).
+- `absence_start_date` : Début de l’absence.
+- `absence_end_date` : Fin de l’absence.
+- `status_id` : Statut de présence (clé vers `attendance_status`).
 
 
-### 7. **Performance Reviews (Évaluations de Performance)**
-**Objectif** : Enregistre les évaluations de performance des employés.
-- `id` (Clé primaire) : Identifiant unique de l'évaluation.
-- `employee_id` : Identifiant de l'employé évalué (clé étrangère vers **Employees**).
-- `review_date` : Date de l'évaluation.
-- `reviewer_id` : Identifiant de l'évaluateur (clé étrangère vers **Employees**, généralement un manager).
-- `performance_score` : Note de performance de l'employé.
-- `comments` : Commentaires supplémentaires sur la performance de l'employé.
+#### 6. **Attendance Status**
+**Objectif** : Liste des statuts de présence.
+- `status_id` : Identifiant.
+- `status_name` : Nom du statut (Présent, Absent, Retard...).
+
+#### 7. **Leave Requests (Demandes de Congé)**
+**Objectif** : Traite les congés des employés.
+- `leave_request_id` : Identifiant.
+- `employee_id` : Employé concerné.
+- `leave_type` : Type de congé.
+- `start_date` : Début du congé.
+- `end_date` : Fin du congé.
+- `status_id` : Statut de la demande (clé vers `leave_status`).
 
 
-### 8. **Training (Formations)**
-**Objectif** : Suivi des formations ou certifications suivies par les employés.
-- `id` (Clé primaire) : Identifiant unique de la formation.
-- `title` : Titre de la formation (par exemple, "Formation Leadership").
-- `description` : Description de la formation.
-- `duration` : Durée de la formation (en heures, jours, etc.).
-- `trainer_id` : Identifiant de l'instructeur ou formateur (clé étrangère vers **Employees**, si la formation est interne).
-- `start_date` : Date de début de la formation.
-- `end_date` : Date de fin de la formation.
-
-### 9. **Projects (Projets)**
-**Objectif** : Liste les projets d'entreprise, avec des informations essentielles (objectif, budget, dates).
-- `id` (Clé primaire) : Identifiant unique du projet.
-- `name` : Nom du projet (par exemple, "Développement d'un logiciel").
-- `description` : Description du projet.
-- `budget` : Budget alloué au projet.
-- `start_date` : Date de début du projet.
-- `end_date` : Date de fin du projet.
-- `status` : Statut du projet (par exemple, "En cours", "Terminé", "Suspendu").
+#### 8. **Leave Status**
+**Objectif** : Définit les statuts de traitement des congés.
+- `status_id` : Identifiant.
+- `status_name` : Statut (En attente, Approuvé, Rejeté...).
 
 
-### 10. **Project Assignments (Affectations de Projets)**
-**Objectif** : Lie les employés aux projets spécifiques sur lesquels ils travaillent.
-- `id` (Clé primaire) : Identifiant unique de l'affectation.
-- `employee_id` : Identifiant de l'employé assigné au projet (clé étrangère vers **Employees**).
-- `project_id` : Identifiant du projet (clé étrangère vers **Projects**).
-- `role_in_project` : Rôle joué par l'employé dans le projet (par exemple, "Développeur", "Manager de projet").
-- `start_date` : Date de début de l'affectation au projet.
-- `end_date` : Date de fin de l'affectation au projet.
+#### 9. **Performance Reviews (Évaluations)**
+**Objectif** : Archive les évaluations des employés.
+- `review_id` : Identifiant.
+- `employee_id` : Employé évalué.
+- `review_date` : Date de l’évaluation.
+- `reviewer_id` : Évaluateur (autre employé).
+- `performance_score` : Note.
+- `comments` : Commentaires.
 
-### **Conclusion :**
-Cette base de données permet de gérer efficacement les informations relatives aux employés, aux projets, et aux processus RH de l'entreprise.
+
+#### 10. **Training (Formations)**
+**Objectif** : Regroupe les sessions de formation proposées.
+- `training_id` : Identifiant.
+- `title` : Nom de la formation.
+- `description` : Contenu ou sujet.
+- `duration` : Durée.
+- `trainer_id` : Référence vers un formateur.
+- `start_date` / `end_date` : Période de la formation.
+
+
+#### 11. **Trainer (Formateurs)**
+**Objectif** : Répertorie les formateurs internes/externes.
+- `trainer_id` : Identifiant.
+- `name` : Nom du formateur.
+- `expertise` : Domaine d’expertise.
+
+#### 12. **Projects (Projets)**
+**Objectif** : Définit les projets de l’entreprise.
+- `project_id` : Identifiant.
+- `project_name` : Nom du projet.
+- `project_description` : Détails du projet.
+- `budget` : Budget alloué.
+- `start_date` / `end_date` : Durée du projet.
+- `status_id` : Statut du projet (clé vers `project_status`).
+
+#### 13. **Project Status**
+**Objectif** : Liste les statuts possibles des projets.
+- `status_id` : Identifiant.
+- `status_name` : Nom du statut (En cours, Terminé...).
+
+
+#### 14. **Project Assignment (Affectations de Projet)**
+**Objectif** : Lie employés et projets.
+- `assignment_id` : Identifiant.
+- `employee_id` : Employé affecté.
+- `project_id` : Projet concerné.
+- `role_in_project` : Rôle spécifique (ex : Développeur).
+- `start_date` / `end_date` : Période d’affectation.
+
