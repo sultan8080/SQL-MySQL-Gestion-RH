@@ -147,3 +147,12 @@ CREATE TABLE project_assignment (
     FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
     FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+
+-- Foreign Key Constraint for Department Manager
+ALTER TABLE department
+ADD CONSTRAINT fk_department_manager FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL;
+
+ALTER TABLE salary
+ADD CONSTRAINT fk_salary_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
+
