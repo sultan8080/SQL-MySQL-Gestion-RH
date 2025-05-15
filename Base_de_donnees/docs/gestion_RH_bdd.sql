@@ -49,3 +49,14 @@ CREATE TABLE leave_request (
     end_date DATE NOT NULL,
     status VARCHAR(20) NOT NULL
 );
+
+
+-- Création de la table performance_review
+CREATE TABLE performance_review (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    review_date DATE NOT NULL,
+    reviewer_id INT,
+    performance_score INT,
+    comments TEXT
+);
