@@ -97,3 +97,14 @@ CREATE TABLE training (
     end_date DATE,
     CONSTRAINT fk_training_trainer FOREIGN KEY (trainer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
 );
+
+-- Table project
+CREATE TABLE project (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL,
+    project_description TEXT,
+    budget DECIMAL(15,2),
+    start_date DATE,
+    end_date DATE,
+    status ENUM('Ongoing', 'Completed', 'On Hold') DEFAULT 'Ongoing'
+);
