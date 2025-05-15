@@ -135,3 +135,15 @@ CREATE TABLE project (
     status_id INT DEFAULT 2,
     FOREIGN KEY (status_id) REFERENCES project_status(status_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Table: project_assignment
+CREATE TABLE project_assignment (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    project_id INT,
+    role_in_project VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
