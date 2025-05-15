@@ -29,3 +29,12 @@ CREATE TABLE position (
     department_id INT NOT NULL,
     salary_range VARCHAR(50)
 );
+
+-- Création de la table salary
+CREATE TABLE salary (
+    salary_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    salary_amount DECIMAL(10,2) NOT NULL,
+    effective_date DATE NOT NULL,
+    bonus DECIMAL(10,2) DEFAULT 0
+);
