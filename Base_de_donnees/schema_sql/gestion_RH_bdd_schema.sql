@@ -108,3 +108,17 @@ CREATE TABLE project (
     end_date DATE,
     status ENUM('Ongoing', 'Completed', 'On Hold') DEFAULT 'Ongoing'
 );
+
+
+-- Table project_assignment
+CREATE TABLE project_assignment (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    project_id INT NOT NULL,
+    role_in_project VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    CONSTRAINT fk_assignment_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    CONSTRAINT fk_assignment_project FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE,
+    UNIQUE KEY unique_assignment (employee_id, project_id)
+);
