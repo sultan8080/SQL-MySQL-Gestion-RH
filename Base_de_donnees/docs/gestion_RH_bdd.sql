@@ -48,3 +48,10 @@ CREATE TABLE salary (
     effective_end_date DATE DEFAULT NULL,
     bonus DECIMAL(10,2)
 ) ENGINE=InnoDB;
+
+-- Table: trainer
+CREATE TABLE trainer (
+    trainer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    expertise VARCHAR(100)
+) ENGINE=InnoDB;
