@@ -85,3 +85,15 @@ CREATE TABLE performance_review (
     CONSTRAINT fk_performance_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
     CONSTRAINT fk_performance_reviewer FOREIGN KEY (reviewer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
 );
+
+-- Table training
+CREATE TABLE training (
+    training_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    duration INT, -- duration in hours
+    trainer_id INT,
+    start_date DATE,
+    end_date DATE,
+    CONSTRAINT fk_training_trainer FOREIGN KEY (trainer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
+);
