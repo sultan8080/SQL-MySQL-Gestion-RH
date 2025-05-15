@@ -99,3 +99,15 @@ CREATE TABLE leave_request (
     FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
     FOREIGN KEY (status_id) REFERENCES leave_status(status_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Table: performance_review
+CREATE TABLE performance_review (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    review_date DATE NOT NULL,
+    reviewer_id INT,
+    performance_score INT CHECK (performance_score BETWEEN 1 AND 10),
+    comments TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
