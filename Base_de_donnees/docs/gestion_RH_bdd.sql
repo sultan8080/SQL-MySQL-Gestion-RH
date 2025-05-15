@@ -21,3 +21,11 @@ CREATE TABLE department (
     location VARCHAR(100),
     manager_id INT NULL
 );
+
+-- Création de la table position
+CREATE TABLE position (
+    position_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    department_id INT NOT NULL,
+    salary_range VARCHAR(50)
+);
