@@ -48,3 +48,17 @@ CREATE TABLE salary (
     bonus DECIMAL(10,2) DEFAULT 0,
     CONSTRAINT fk_salary_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
 );
+
+
+-- Table attendance
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    check_in_time DATETIME,
+    check_out_time DATETIME,
+    absence_type VARCHAR(50),
+    absence_start_date DATE,
+    absence_end_date DATE,
+    CONSTRAINT fk_attendance_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
+);
+
