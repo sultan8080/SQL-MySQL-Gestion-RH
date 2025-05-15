@@ -71,3 +71,14 @@ CREATE TABLE training (
     start_date DATE,
     end_date DATE
 );
+
+-- Création de la table project
+CREATE TABLE project (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL,
+    project_description TEXT,
+    budget DECIMAL(15,2),
+    start_date DATE,
+    end_date DATE,
+    status VARCHAR(20)
+);
