@@ -82,3 +82,14 @@ CREATE TABLE project (
     end_date DATE,
     status VARCHAR(20)
 );
+
+
+-- Création de la table project_assignment
+CREATE TABLE project_assignment (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    project_id INT NOT NULL,
+    role_in_project VARCHAR(100),
+    start_date DATE,
+    end_date DATE
+);
