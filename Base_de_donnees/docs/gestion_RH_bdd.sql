@@ -13,3 +13,11 @@ CREATE TABLE employee (
     date_of_birth DATE,
     manager_id INT NULL
 );
+
+-- Création de la table department
+CREATE TABLE department (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(100),
+    manager_id INT NULL
+);
