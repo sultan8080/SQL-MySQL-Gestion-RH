@@ -55,3 +55,20 @@ CREATE TABLE trainer (
     name VARCHAR(100) NOT NULL,
     expertise VARCHAR(100)
 ) ENGINE=InnoDB;
+
+-- Table: employee
+CREATE TABLE employee (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone_number VARCHAR(20),
+    hire_date DATE NOT NULL,
+    date_of_birth DATE,
+    department_id INT,
+    job_role_id INT,
+    manager_id INT DEFAULT NULL,
+    FOREIGN KEY (department_id) REFERENCES department(department_id) ON DELETE SET NULL,
+    FOREIGN KEY (job_role_id) REFERENCES job_role(job_role_id) ON DELETE SET NULL,
+    FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
