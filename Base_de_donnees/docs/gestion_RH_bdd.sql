@@ -38,3 +38,14 @@ CREATE TABLE salary (
     effective_date DATE NOT NULL,
     bonus DECIMAL(10,2) DEFAULT 0
 );
+
+
+-- Création de la table leave_request
+CREATE TABLE leave_request (
+    leave_request_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    leave_type VARCHAR(50) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status VARCHAR(20) NOT NULL
+);
