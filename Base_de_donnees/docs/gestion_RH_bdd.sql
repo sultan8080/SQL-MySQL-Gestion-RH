@@ -111,3 +111,15 @@ CREATE TABLE performance_review (
     FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
     FOREIGN KEY (reviewer_id) REFERENCES employee(employee_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Table: training
+CREATE TABLE training (
+    training_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100),
+    description TEXT,
+    duration INT CHECK (duration > 0),
+    trainer_id INT,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
