@@ -60,3 +60,14 @@ CREATE TABLE performance_review (
     performance_score INT,
     comments TEXT
 );
+
+-- Création de la table training
+CREATE TABLE training (
+    training_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    duration INT,
+    trainer_id INT,
+    start_date DATE,
+    end_date DATE
+);
