@@ -3,6 +3,30 @@ CREATE DATABASE IF NOT EXISTS gestion_rh;
 USE gestion_rh;
 
 
+-- Lookup tables for statuses (attendance, leave, project)
+CREATE TABLE attendance_status (
+    status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) UNIQUE NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE leave_status (
+    status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) UNIQUE NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE project_status (
+    status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) UNIQUE NOT NULL
+) ENGINE=InnoDB;
+
+-- Table: department
+CREATE TABLE department (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(100),
+    manager_id INT DEFAULT NULL
+) ENGINE=InnoDB;
+
 
 -- Création de la table employee
 CREATE TABLE employee (
