@@ -86,3 +86,16 @@ CREATE TABLE attendance (
     FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
     FOREIGN KEY (status_id) REFERENCES attendance_status(status_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+
+-- Table: leave_request
+CREATE TABLE leave_request (
+    leave_request_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    leave_type VARCHAR(100),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status_id INT DEFAULT 1,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    FOREIGN KEY (status_id) REFERENCES leave_status(status_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
