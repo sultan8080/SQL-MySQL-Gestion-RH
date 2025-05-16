@@ -225,3 +225,16 @@ INSERT INTO training (title, description, duration, trainer_id, start_date, end_
 ('Optimisation logistique', 'Stratégies pour réduire les coûts.', 50, 8, '2024-11-01', '2024-12-15'),
 ('UX/UI Design avancé', 'Créer des interfaces intuitives.', 30, 9, '2024-07-15', '2024-08-15'),
 ('Protection des systèmes informatiques', 'Renforcement de la cybersécurité.', 40, 10, '2024-12-01', '2025-01-15');
+
+
+INSERT INTO attendance (employee_id, check_in_time, check_out_time, absence_type, absence_start_date, absence_end_date, status_id) VALUES
+(1, '2024-05-15 08:30:00', '2024-05-15 17:30:00', NULL, NULL, NULL, 1),
+(2, '2024-05-15 08:45:00', '2024-05-15 17:45:00', NULL, NULL, NULL, 1),
+(3, NULL, NULL, 'Congé maladie', '2024-05-10', '2024-05-15', 2),
+(4, '2024-05-15 09:00:00', '2024-05-15 18:00:00', NULL, NULL, NULL, 1),
+(5, '2024-05-15 08:30:00', '2024-05-15 17:30:00', NULL, NULL, NULL, 1),
+(6, NULL, NULL, 'Congé annuel', '2024-05-10', '2024-05-17', 2),
+(7, '2024-05-15 09:15:00', '2024-05-15 18:15:00', NULL, NULL, NULL, 1),
+(8, '2024-05-15 08:30:00', '2024-05-15 17:30:00', NULL, NULL, NULL, 1),
+(9, '2024-05-15 08:50:00', '2024-05-15 17:50:00', NULL, NULL, NULL, 1),
+(10, NULL, NULL, 'Congé sans solde', '2024-05-12', '2024-05-20', 3);
