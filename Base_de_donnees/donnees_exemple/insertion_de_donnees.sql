@@ -200,3 +200,15 @@ INSERT INTO project_assignment (employee_id, project_id, role_in_project, start_
 (29, 10, 'Chargé de satisfaction client', '2024-08-20', '2025-05-10'),
 (39, 10, 'Responsable service client', '2024-08-20', '2025-05-10');
 
+
+INSERT INTO trainer (name, expertise) VALUES
+('Jean Dupont', 'Développement Web'),
+('Marie Lefèvre', 'Gestion des ressources humaines'),
+('Alex Martin', 'Analyse financière'),
+('Sophie Bernard', 'Marketing digital'),
+('Thomas Petit', 'Sécurité informatique'),
+('Laura Robert', 'Gestion de projet'),
+('Pierre Moreau', 'Communication et leadership'),
+('Camille Girard', 'Logistique et transport'),
+('Lucie Fontaine', 'Design UX/UI'),
+('David Rousseau', 'Cybersécurité');
