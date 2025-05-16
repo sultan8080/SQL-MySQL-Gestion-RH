@@ -137,3 +137,15 @@ INSERT INTO salary (employee_id, salary_amount, effective_date, bonus) VALUES
 (40, 60000, '2024-01-01', 5000);
 
 
+INSERT INTO leave_request (employee_id, leave_type, start_date, end_date, status_id) VALUES
+(1, 'Congé annuel', '2024-06-10', '2024-06-20', 2),
+(2, 'Congé maladie', '2024-03-05', '2024-03-10', 1),
+(3, 'Congé maternité', '2024-07-01', '2024-09-01', 2),
+(4, 'Congé personnel', '2024-08-15', '2024-08-20', 3),
+(5, 'Congé sans solde', '2024-10-01', '2024-10-15', 2),
+(6, 'Congé parental', '2024-05-10', '2024-05-30', 2),
+(7, 'Congé exceptionnel', '2024-04-20', '2024-04-25', 1),
+(8, 'Congé annuel', '2024-11-01', '2024-11-10', 3),
+(9, 'Congé maladie', '2024-09-05', '2024-09-09', 2),
+(10, 'Congé maternité', '2024-12-01', '2025-02-01', 1);
+
