@@ -19,7 +19,7 @@ INSERT INTO project_status (status_name) VALUES
 ('Terminé'),
 ('En pause');
 
-
+-- department
 INSERT INTO department (name, location) VALUES
 ('Ressources Humaines', 'Paris'),
 ('Finance', 'Lyon'),
@@ -32,7 +32,7 @@ INSERT INTO department (name, location) VALUES
 ('Relations Publiques', 'Nice'),
 ('Qualité et Conformité', 'Grenoble');
 
-
+-- job_role
 INSERT INTO job_role (title, department_id, min_salary, max_salary) VALUES
 ('Développeur Web', 3, 35000, 70000),
 ('Chef de Projet IT', 3, 45000, 90000),
@@ -50,7 +50,7 @@ INSERT INTO job_role (title, department_id, min_salary, max_salary) VALUES
 ('Designer UX/UI', 3, 45000, 87000),
 ('Chef de projet événementiel', 9, 44000, 86000);
 
-
+--employee
 INSERT INTO employee (first_name, last_name, email, phone_number, hire_date, date_of_birth, department_id, job_role_id) VALUES
 ('Alice', 'Durand', 'alice.durand@example.com', '0601020304', '2020-05-15', '1995-02-10', 3, 1),
 ('Bob', 'Lemoine', 'bob.lemoine@example.com', '0611223344', '2021-07-20', '1990-09-25', 2, 4),
@@ -94,6 +94,7 @@ INSERT INTO employee (first_name, last_name, email, phone_number, hire_date, dat
 ('Clara', 'Germain', 'clara.germain@example.com', '0623456789', '2021-03-10', '1995-11-03', 2, 6);
 
 
+--salary
 INSERT INTO salary (employee_id, salary_amount, effective_date, bonus) VALUES
 (1, 60000, '2024-01-01', 5000),
 (2, 72000, '2024-01-01', 7000),
@@ -137,6 +138,7 @@ INSERT INTO salary (employee_id, salary_amount, effective_date, bonus) VALUES
 (40, 60000, '2024-01-01', 5000);
 
 
+-- leave_request
 INSERT INTO leave_request (employee_id, leave_type, start_date, end_date, status_id) VALUES
 (1, 'Congé annuel', '2024-06-10', '2024-06-20', 2),
 (2, 'Congé maladie', '2024-03-05', '2024-03-10', 1),
@@ -149,6 +151,8 @@ INSERT INTO leave_request (employee_id, leave_type, start_date, end_date, status
 (9, 'Congé maladie', '2024-09-05', '2024-09-09', 2),
 (10, 'Congé maternité', '2024-12-01', '2025-02-01', 1);
 
+
+-- project
 INSERT INTO project (project_name, project_description, budget, start_date, end_date, status_id) VALUES
 ('Refonte du site web', 'Amélioration de l’interface utilisateur et de l’ergonomie.', 15000, '2024-03-01', '2024-09-01', 2),
 ('Système RH', 'Développement d’un système interne de gestion des ressources humaines.', 50000, '2024-01-15', '2024-12-15', 3),
@@ -161,6 +165,8 @@ INSERT INTO project (project_name, project_description, budget, start_date, end_
 ('Innovation produit', 'Développement de nouvelles fonctionnalités pour les produits existants.', 88000, '2024-04-01', '2025-02-01', 2),
 ('Service client IA', 'Mise en place d’un chatbot intelligent pour l’assistance clientèle.', 55000, '2024-08-20', '2025-05-10', 2);
 
+
+-- project_assignment
 INSERT INTO project_assignment (employee_id, project_id, role_in_project, start_date, end_date) VALUES
 (1, 1, 'Développeur Frontend', '2024-03-01', '2024-09-01'),
 (5, 1, 'UX Designer', '2024-03-01', '2024-09-01'),
@@ -201,6 +207,7 @@ INSERT INTO project_assignment (employee_id, project_id, role_in_project, start_
 (39, 10, 'Responsable service client', '2024-08-20', '2025-05-10');
 
 
+-- trainer
 INSERT INTO trainer (name, expertise) VALUES
 ('Jean Dupont', 'Développement Web'),
 ('Marie Lefèvre', 'Gestion des ressources humaines'),
@@ -214,6 +221,7 @@ INSERT INTO trainer (name, expertise) VALUES
 ('David Rousseau', 'Cybersécurité');
 
 
+-- training
 INSERT INTO training (title, description, duration, trainer_id, start_date, end_date) VALUES
 ('Formation HTML & CSS', 'Apprendre les bases du développement web.', 30, 1, '2024-05-10', '2024-06-10'),
 ('Stratégies RH', 'Optimisation des processus de recrutement.', 25, 2, '2024-07-01', '2024-07-26'),
@@ -227,6 +235,7 @@ INSERT INTO training (title, description, duration, trainer_id, start_date, end_
 ('Protection des systèmes informatiques', 'Renforcement de la cybersécurité.', 40, 10, '2024-12-01', '2025-01-15');
 
 
+-- attendance
 INSERT INTO attendance (employee_id, check_in_time, check_out_time, absence_type, absence_start_date, absence_end_date, status_id) VALUES
 (1, '2024-05-15 08:30:00', '2024-05-15 17:30:00', NULL, NULL, NULL, 1),
 (2, '2024-05-15 08:45:00', '2024-05-15 17:45:00', NULL, NULL, NULL, 1),
@@ -240,6 +249,7 @@ INSERT INTO attendance (employee_id, check_in_time, check_out_time, absence_type
 (10, NULL, NULL, 'Congé sans solde', '2024-05-12', '2024-05-20', 3);
 
 
+-- performance_review
 INSERT INTO performance_review (employee_id, review_date, reviewer_id, performance_score, comments) VALUES
 (1, '2024-04-10', 5, 8, 'Bon développement web, amélioration possible en UX.'),
 (2, '2024-04-15', 7, 9, 'Gestion RH efficace, quelques améliorations en communication.'),
