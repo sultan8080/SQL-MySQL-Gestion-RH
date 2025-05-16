@@ -212,3 +212,16 @@ INSERT INTO trainer (name, expertise) VALUES
 ('Camille Girard', 'Logistique et transport'),
 ('Lucie Fontaine', 'Design UX/UI'),
 ('David Rousseau', 'Cybersécurité');
+
+
+INSERT INTO training (title, description, duration, trainer_id, start_date, end_date) VALUES
+('Formation HTML & CSS', 'Apprendre les bases du développement web.', 30, 1, '2024-05-10', '2024-06-10'),
+('Stratégies RH', 'Optimisation des processus de recrutement.', 25, 2, '2024-07-01', '2024-07-26'),
+('Analyse financière avancée', 'Méthodes d’analyse pour les entreprises.', 40, 3, '2024-08-15', '2024-09-24'),
+('Marketing digital et réseaux sociaux', 'Stratégies de contenu et publicité ciblée.', 35, 4, '2024-06-01', '2024-07-05'),
+('Sécurité informatique', 'Meilleures pratiques pour protéger les données.', 45, 5, '2024-09-01', '2024-10-15'),
+('Gestion de projet Agile', 'Introduction aux méthodologies Agile.', 30, 6, '2024-05-20', '2024-06-20'),
+('Leadership et communication', 'Amélioration de la prise de décision.', 20, 7, '2024-10-10', '2024-10-30'),
+('Optimisation logistique', 'Stratégies pour réduire les coûts.', 50, 8, '2024-11-01', '2024-12-15'),
+('UX/UI Design avancé', 'Créer des interfaces intuitives.', 30, 9, '2024-07-15', '2024-08-15'),
+('Protection des systèmes informatiques', 'Renforcement de la cybersécurité.', 40, 10, '2024-12-01', '2025-01-15');
