@@ -238,3 +238,17 @@ INSERT INTO attendance (employee_id, check_in_time, check_out_time, absence_type
 (8, '2024-05-15 08:30:00', '2024-05-15 17:30:00', NULL, NULL, NULL, 1),
 (9, '2024-05-15 08:50:00', '2024-05-15 17:50:00', NULL, NULL, NULL, 1),
 (10, NULL, NULL, 'Congé sans solde', '2024-05-12', '2024-05-20', 3);
+
+
+INSERT INTO performance_review (employee_id, review_date, reviewer_id, performance_score, comments) VALUES
+(1, '2024-04-10', 5, 8, 'Bon développement web, amélioration possible en UX.'),
+(2, '2024-04-15', 7, 9, 'Gestion RH efficace, quelques améliorations en communication.'),
+(3, '2024-03-30', 10, 7, 'Analyse financière correcte, doit être plus approfondie.'),
+(4, '2024-04-05', 2, 10, 'Excellent leadership et très bon travail d’équipe.'),
+(5, '2024-04-20', 8, 6, 'Bonne organisation, quelques retards dans les délais.'),
+(6, '2024-03-25', 4, 7, 'Amélioration notable en stratégie marketing.'),
+(7, '2024-05-01', 9, 5, 'Besoin de plus de formation en communication.'),
+(8, '2024-04-12', 3, 9, 'Très bon niveau technique en cybersécurité.'),
+(9, '2024-03-18', 6, 8, 'Bon travail en logistique, gestion efficace.'),
+(10, '2024-04-08', 1, 6, 'Peut mieux gérer les délais et la productivité.');
+
