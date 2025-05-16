@@ -2,5 +2,7 @@
 *.swp
 .idea/
 .vscode/
-
+.txt/
 note.txt
+drafts.txt
+mcd.txt

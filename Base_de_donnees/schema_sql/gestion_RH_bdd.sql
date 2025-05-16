@@ -156,3 +156,5 @@ ADD CONSTRAINT fk_department_manager FOREIGN KEY (manager_id) REFERENCES employe
 ALTER TABLE salary
 ADD CONSTRAINT fk_salary_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
 
+
+
