@@ -22,3 +22,17 @@ INSERT INTO project_status (status_name) VALUES
 ('En cours'),
 ('Terminé'),
 ('En pause');
+
+SELECT * FROM project_status;
+
+INSERT INTO department (name, location) VALUES
+('Ressources Humaines', 'Paris'),
+('Finance', 'Lyon'),
+('Informatique', 'Marseille'),
+('Marketing', 'Bordeaux'),
+('Gestion des Projets', 'Toulouse'),
+('Service Client', 'Strasbourg'),
+('Logistique', 'Lille'),
+('Développement Produit', 'Nantes'),
+('Relations Publiques', 'Nice'),
+('Qualité et Conformité', 'Grenoble');
