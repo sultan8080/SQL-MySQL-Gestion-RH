@@ -149,3 +149,14 @@ INSERT INTO leave_request (employee_id, leave_type, start_date, end_date, status
 (9, 'Congé maladie', '2024-09-05', '2024-09-09', 2),
 (10, 'Congé maternité', '2024-12-01', '2025-02-01', 1);
 
+INSERT INTO project (project_name, project_description, budget, start_date, end_date, status_id) VALUES
+('Refonte du site web', 'Amélioration de l’interface utilisateur et de l’ergonomie.', 15000, '2024-03-01', '2024-09-01', 2),
+('Système RH', 'Développement d’un système interne de gestion des ressources humaines.', 50000, '2024-01-15', '2024-12-15', 3),
+('Campagne marketing', 'Lancement d’une campagne digitale pour augmenter la visibilité.', 25000, '2024-06-01', '2024-12-01', 2),
+('Audit financier', 'Réalisation d’un audit complet des finances de l’entreprise.', 80000, '2024-04-10', '2024-11-30', 3),
+('Plateforme e-commerce', 'Création d’une plateforme de vente en ligne pour produits exclusifs.', 95000, '2024-02-20', '2024-10-10', 2),
+('Optimisation logistique', 'Amélioration de la gestion des stocks et de la distribution.', 62000, '2024-05-01', '2025-01-15', 2),
+('Plan de formation', 'Mise en place de formations internes pour améliorer les compétences.', 40000, '2024-07-01', '2024-12-30', 3),
+('Sécurité informatique', 'Renforcement des mesures de cybersécurité et des protocoles.', 70000, '2024-09-15', '2025-03-01', 2),
+('Innovation produit', 'Développement de nouvelles fonctionnalités pour les produits existants.', 88000, '2024-04-01', '2025-02-01', 2),
+('Service client IA', 'Mise en place d’un chatbot intelligent pour l’assistance clientèle.', 55000, '2024-08-20', '2025-05-10', 2);
