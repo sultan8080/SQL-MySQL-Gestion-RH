@@ -17,3 +17,10 @@ SELECT employee_id, leave_type, start_date, end_date
 FROM leave_request
 WHERE status_id = (SELECT status_id FROM leave_status WHERE status_name = 'Approuvé')
 AND YEAR(start_date) = 2024;
+
+
+-- 24. Afficher le projet avec le budget le plus élevé
+SELECT project_name, budget
+FROM project
+ORDER BY budget DESC
+LIMIT 1;
