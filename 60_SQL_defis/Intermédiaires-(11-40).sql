@@ -43,3 +43,10 @@ SELECT project_name, budget
 FROM project
 WHERE budget > (SELECT AVG(budget) FROM project);
 
+
+--18. Afficher les employés affectés à plus d’un projet.
+SELECT e.first_name, e.last_name, COUNT(pa.project_id) AS total_projects
+FROM employee e
+JOIN project_assignment pa ON e.employee_id = pa.employee_id
+GROUP BY e.first_name, e.last_name
+HAVING COUNT(pa.project_id) > 1;
