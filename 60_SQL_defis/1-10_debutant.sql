@@ -36,7 +36,7 @@ WHERE date_of_birth < '1990-01-01';
 
 
 --8. Afficher tous les projets en cours avec leur budget.
-SELECT project_name, budget
+SELECT p.project_name, p.budget
 FROM project p
 JOIN project_status ps ON p.status_id = ps.status_id
 WHERE ps.status_name = 'En cours';
@@ -47,3 +47,8 @@ FROM project
 WHERE status_id = (SELECT status_id FROM project_status WHERE status_name = 'En cours');
 
 
+--8 Afficher les employés qui travaillent dans le département "Informatique".
+SELECT e.first_name, e.last_name, d.name
+FROM employee e
+JOIN department d ON e.department_id = d.department_id
+WHERE name = 'Informatique';
