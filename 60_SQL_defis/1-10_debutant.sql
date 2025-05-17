@@ -33,3 +33,17 @@ SELECT DISTINCT title FROM job_role;
 SELECT first_name, last_name, date_of_birth
 FROM employee
 WHERE date_of_birth < '1990-01-01';
+
+
+--8. Afficher tous les projets en cours avec leur budget.
+SELECT project_name, budget
+FROM project p
+JOIN project_status ps ON p.status_id = ps.status_id
+WHERE ps.status_name = 'En cours';
+
+--2ème methode 
+SELECT project_name, budget
+FROM project
+WHERE status_id = (SELECT status_id FROM project_status WHERE status_name = 'En cours');
+
+
