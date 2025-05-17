@@ -32,4 +32,8 @@ FROM leave_request
 GROUP BY leave_type;
 
 
-
+--16. Afficher les employés avec un bonus supérieur à 6000.
+SELECT e.first_name, e.last_name, s.bonus
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+WHERE s.bonus > 6000;
