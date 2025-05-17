@@ -11,3 +11,9 @@ FROM employee e
 LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id
 LEFT JOIN project p ON pa.project_id = p.project_id;
 
+
+-- 23. Lister les congés approuvés en 2024.
+SELECT employee_id, leave_type, start_date, end_date
+FROM leave_request
+WHERE status_id = (SELECT status_id FROM leave_status WHERE status_name = 'Approuvé')
+AND YEAR(start_date) = 2024;
