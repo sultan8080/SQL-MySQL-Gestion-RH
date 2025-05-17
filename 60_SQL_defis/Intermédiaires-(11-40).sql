@@ -18,3 +18,12 @@ SELECT e.first_name, e.last_name, s.salary_amount, s.bonus
 FROM employee e
 JOIN salary s ON e.employee_id = s.employee_id
 ORDER BY s.salary_amount DESC;
+
+
+-- 14. Trouver les employés qui n’ont pas demandé de congé.
+SELECT e.first_name, e.last_name
+FROM employee e
+LEFT JOIN leave_request lr ON e.employee_id = lr.employee_id
+WHERE lr.employee_id IS NULL;
+
+
