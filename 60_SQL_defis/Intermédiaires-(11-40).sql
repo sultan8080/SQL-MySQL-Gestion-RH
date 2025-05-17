@@ -26,4 +26,10 @@ FROM employee e
 LEFT JOIN leave_request lr ON e.employee_id = lr.employee_id
 WHERE lr.employee_id IS NULL;
 
+-- 15. Afficher le nombre de congés par type.
+SELECT leave_type, COUNT(*) AS total_conges
+FROM leave_request
+GROUP BY leave_type;
+
+
 
