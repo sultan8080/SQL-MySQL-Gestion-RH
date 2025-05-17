@@ -49,3 +49,10 @@ JOIN project_assignment pa ON p.project_id = pa.project_id
 JOIN employee e ON pa.employee_id = e.employee_id
 GROUP BY p.project_name
 HAVING COUNT(DISTINCT e.department_id) = 1;
+
+
+-- 28. Trouver les rôles pour lesquels aucun employé n’est encore embauché.
+SELECT jr.title AS job_role
+FROM job_role jr
+LEFT JOIN employee e ON jr.job_role_id = e.job_role_id
+WHERE e.employee_id IS NULL;
