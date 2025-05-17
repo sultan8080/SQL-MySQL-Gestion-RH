@@ -56,3 +56,9 @@ SELECT jr.title AS job_role
 FROM job_role jr
 LEFT JOIN employee e ON jr.job_role_id = e.job_role_id
 WHERE e.employee_id IS NULL;
+
+
+29. Afficher les employés avec leur âge actuel calculé.
+SELECT first_name, last_name, 
+YEAR(CURRENT_DATE) - YEAR(date_of_birth) AS age
+FROM employee;
