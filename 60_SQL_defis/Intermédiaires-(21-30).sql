@@ -40,3 +40,12 @@ FROM employee e
 JOIN leave_request lr ON e.employee_id = lr.employee_id
 GROUP BY e.first_name, e.last_name
 HAVING COUNT(lr.leave_request_id) > 3;
+
+
+-- 27. Lister les projets auxquels participent uniquement des employés du même département.
+SELECT p.project_name
+FROM project p
+JOIN project_assignment pa ON p.project_id = pa.project_id
+JOIN employee e ON pa.employee_id = e.employee_id
+GROUP BY p.project_name
+HAVING COUNT(DISTINCT e.department_id) = 1;
