@@ -11,3 +11,10 @@ SELECT p.project_name, COUNT(pa.employee_id) AS total_employes
 FROM project p
 LEFT JOIN project_assignment pa ON p.project_id = pa.project_id
 GROUP BY p.project_name;
+
+
+--13. Lister les employés avec leurs salaires et bonus, triés par salaire décroissant.
+SELECT e.first_name, e.last_name, s.salary_amount, s.bonus
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+ORDER BY s.salary_amount DESC;
