@@ -16,5 +16,10 @@ JOIN salary s ON e.employee_id = s.employee_id
 WHERE s.salary_amount > 70000;
 
 --4. Compter le nombre total d’employés dans la base de données.
-
 SELECT COUNT(*) AS total_employes FROM employee;
+
+--5. Trier les employés par date d’embauche (du plus récent au plus ancien).
+SELECT first_name, last_name, hire_date
+FROM employee
+ORDER BY hire_date DESC;
+
