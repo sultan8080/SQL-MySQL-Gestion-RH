@@ -56,3 +56,11 @@ HAVING COUNT(pa.project_id) > 1;
 SELECT title AS job_role, min_salary, max_salary
 FROM job_role;
 
+
+-- 20. Afficher les projets "Terminés" avec leur date de fin.
+SELECT project_name AS project, end_date 
+FROM project p
+JOIN project_status ps ON p.status_id = ps.status_id
+WHERE ps.status_name = 'Terminé';
+
+
