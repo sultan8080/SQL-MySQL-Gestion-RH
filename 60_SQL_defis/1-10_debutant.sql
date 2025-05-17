@@ -27,3 +27,9 @@ ORDER BY hire_date DESC;
 
 --6. Afficher les rôles de poste distincts existants dans la table job_role.
 SELECT DISTINCT title FROM job_role;
+
+
+--7. Lister les employés nés avant 1990.
+SELECT first_name, last_name, date_of_birth
+FROM employee
+WHERE date_of_birth < '1990-01-01';
