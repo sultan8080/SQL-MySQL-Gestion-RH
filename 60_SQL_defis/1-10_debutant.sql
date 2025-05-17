@@ -47,8 +47,13 @@ FROM project
 WHERE status_id = (SELECT status_id FROM project_status WHERE status_name = 'En cours');
 
 
---8 Afficher les employés qui travaillent dans le département "Informatique".
+--9 Afficher les employés qui travaillent dans le département "Informatique".
 SELECT e.first_name, e.last_name, d.name
 FROM employee e
 JOIN department d ON e.department_id = d.department_id
 WHERE name = 'Informatique';
+
+
+--10 Trouver les employés dont le nom commence par 'A'.
+SELECT * FROM employee WHERE last_name LIKE 'A%';
+
