@@ -32,3 +32,11 @@ FROM department d
 JOIN employee e ON d.department_id = e.department_id
 GROUP BY d.name
 HAVING COUNT(e.employee_id) > 4;
+
+
+-- 26. Afficher les employés qui ont pris plus de 3 congés au total.
+SELECT e.first_name, e.last_name, COUNT(lr.leave_request_id) AS total_leaves
+FROM employee e
+JOIN leave_request lr ON e.employee_id = lr.employee_id
+GROUP BY e.first_name, e.last_name
+HAVING COUNT(lr.leave_request_id) > 3;
