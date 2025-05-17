@@ -50,3 +50,9 @@ FROM employee e
 JOIN project_assignment pa ON e.employee_id = pa.employee_id
 GROUP BY e.first_name, e.last_name
 HAVING COUNT(pa.project_id) > 1;
+
+
+-- 19. Lister les rôles avec leur salaire minimum et maximum.
+SELECT title AS job_role, min_salary, max_salary
+FROM job_role;
+
