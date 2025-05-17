@@ -37,3 +37,9 @@ SELECT e.first_name, e.last_name, s.bonus
 FROM employee e
 JOIN salary s ON e.employee_id = s.employee_id
 WHERE s.bonus > 6000;
+
+--17. Lister les projets ayant un budget supérieur à la moyenne.
+SELECT project_name, budget
+FROM project
+WHERE budget > (SELECT AVG(budget) FROM project);
+
