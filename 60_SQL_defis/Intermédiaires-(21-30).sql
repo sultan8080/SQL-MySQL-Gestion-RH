@@ -58,7 +58,15 @@ LEFT JOIN employee e ON jr.job_role_id = e.job_role_id
 WHERE e.employee_id IS NULL;
 
 
-29. Afficher les employés avec leur âge actuel calculé.
+-- 29. Afficher les employés avec leur âge actuel calculé.
 SELECT first_name, last_name, 
 YEAR(CURRENT_DATE) - YEAR(date_of_birth) AS age
 FROM employee;
+
+
+--3 0. Lister les employés qui ont un bonus mais aucun projet assigné.
+SELECT e.first_name, e.last_name, s.bonus
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id
+WHERE s.bonus IS NOT NULL AND pa.project_id IS NULL;
