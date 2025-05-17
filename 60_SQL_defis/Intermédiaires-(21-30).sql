@@ -24,3 +24,11 @@ SELECT project_name, budget
 FROM project
 ORDER BY budget DESC
 LIMIT 1;
+
+
+-- 25. Trouver les départements avec plus de 4 employés.
+SELECT d.name AS department_name, COUNT(e.employee_id) AS total_employees
+FROM department d
+JOIN employee e ON d.department_id = e.department_id
+GROUP BY d.name
+HAVING COUNT(e.employee_id) > 4;
