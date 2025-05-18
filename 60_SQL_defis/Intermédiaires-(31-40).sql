@@ -24,3 +24,12 @@ FROM department d
 LEFT JOIN employee e ON d.department_id = e.department_id
 LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id
 WHERE pa.project_id IS NULL;
+
+
+-- 34. Afficher pour chaque département, le salaire moyen des employés.
+SELECT d.name AS Department_Name, ROUND(AVG(s.salary_amount),2) AS Average_Salary
+FROM department d
+LEFT JOIN employee e ON d.department_id = e.department_id
+LEFT JOIN salary s ON e.employee_id = s.employee_id
+GROUP BY d.name;
+
