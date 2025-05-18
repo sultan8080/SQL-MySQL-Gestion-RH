@@ -68,3 +68,10 @@ JOIN leave_request lr ON e.employee_id = lr.employee_id
 JOIN leave_status ls ON lr.status_id = ls.status_id
 WHERE ls.status_name = "Rejeté";
 
+
+-- 39. Trouver les postes occupés par au moins deux employés dans le même département
+SELECT employee_id, department_id, COUNT(*) AS num_employees
+FROM employee
+GROUP BY employee_id, department_id
+HAVING COUNT(*) > 1;
+
