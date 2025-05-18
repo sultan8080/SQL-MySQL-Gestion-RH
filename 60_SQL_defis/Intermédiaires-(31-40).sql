@@ -42,3 +42,12 @@ JOIN salary es ON e.employee_id = es.employee_id
 JOIN employee m ON e.manager_id = m.employee_id
 JOIN salary ms ON m.employee_id = ms.employee_id
 WHERE es.salary_amount > ms.salary_amount;
+
+
+-- 36. Lister les projets qui impliquent des employés de plus de 40 ans.
+SELECT DISTINCT p.project_name, e.first_name, e.last_name, 
+       (YEAR(CURRENT_DATE) - YEAR(e.date_of_birth)) AS age
+FROM employee e
+JOIN project_assignment pa ON e.employee_id = pa.employee_id
+JOIN project p ON pa.project_id = p.project_id
+WHERE (YEAR(CURRENT_DATE) - YEAR(e.date_of_birth)) > 40;
