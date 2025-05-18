@@ -75,3 +75,9 @@ FROM employee
 GROUP BY employee_id, department_id
 HAVING COUNT(*) > 1;
 
+
+-- 40. Afficher les projets actifs aujourd’hui (entre la date de début et de fin incluant aujourd’hui).
+SELECT p.project_name, ps.status_name, p.start_date, p.end_date
+FROM project p
+JOIN project_status ps ON p.status_id = ps.status_id
+WHERE ps.status_name = "En cours";
