@@ -51,3 +51,12 @@ FROM employee e
 JOIN project_assignment pa ON e.employee_id = pa.employee_id
 JOIN project p ON pa.project_id = p.project_id
 WHERE (YEAR(CURRENT_DATE) - YEAR(e.date_of_birth)) > 40;
+
+
+-- 37. Afficher les rôles avec le nombre d’employés par rôle, trié du plus au moins représenté.
+SELECT j.job_role_id AS job_id, j.title, COUNT(e.employee_id) AS NUMBER_EMPLOYEES
+FROM job_role j
+JOIN employee e ON e.job_role_id = j.job_role_id
+GROUP BY j.job_role_id, j.title
+ORDER BY NUMBER_EMPLOYEES DESC;
+
