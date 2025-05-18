@@ -17,3 +17,10 @@ FROM employee e
 LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id
 GROUP BY e.first_name, e.last_name;
 
+
+-- 33. Lister les départements qui n’ont aucun projet associé.
+SELECT d.name AS department_name
+FROM department d
+LEFT JOIN employee e ON d.department_id = e.department_id
+LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id
+WHERE pa.project_id IS NULL;
