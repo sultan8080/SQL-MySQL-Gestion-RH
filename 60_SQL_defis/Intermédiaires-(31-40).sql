@@ -60,3 +60,11 @@ JOIN employee e ON e.job_role_id = j.job_role_id
 GROUP BY j.job_role_id, j.title
 ORDER BY NUMBER_EMPLOYEES DESC;
 
+
+-- 38. Afficher les congés refusés avec le nom de l’employé.
+SELECT e.employee_id, CONCAT(e.last_name, ' ', e.first_name) AS employee_name
+FROM employee e
+JOIN leave_request lr ON e.employee_id = lr.employee_id
+JOIN leave_status ls ON lr.status_id = ls.status_id
+WHERE ls.status_name = "Rejeté";
+
