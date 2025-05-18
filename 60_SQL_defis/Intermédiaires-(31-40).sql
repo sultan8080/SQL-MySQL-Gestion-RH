@@ -33,3 +33,12 @@ LEFT JOIN employee e ON d.department_id = e.department_id
 LEFT JOIN salary s ON e.employee_id = s.employee_id
 GROUP BY d.name;
 
+
+-- 35. Trouver les employés qui ont un salaire supérieur à celui de leur chef de projet.
+SELECT e.employee_id, CONCAT(e.last_name, ' ', e.first_name) AS employee_name, es.salary_amount AS employee_salary,
+       m.employee_id AS manager_id, CONCAT(m.last_name, ' ', m.first_name) AS manager_name, ms.salary_amount AS manager_salary
+FROM employee e
+JOIN salary es ON e.employee_id = es.employee_id
+JOIN employee m ON e.manager_id = m.employee_id
+JOIN salary ms ON m.employee_id = ms.employee_id
+WHERE es.salary_amount > ms.salary_amount;
