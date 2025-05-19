@@ -46,3 +46,13 @@ SELECT
 FROM employee e
 JOIN salary s ON e.employee_id = s.employee_id
 JOIN job_role jr ON e.job_role_id = jr.job_role_id;
+
+
+--55. Affiche la répartition mensuelle des différents types de congés pris par les employés.
+SELECT 
+    MONTH(lr.start_date) AS mois,
+    lr.leave_type,
+    COUNT(*) AS nb_conges
+FROM leave_request lr
+GROUP BY mois, lr.leave_type
+ORDER BY mois;
