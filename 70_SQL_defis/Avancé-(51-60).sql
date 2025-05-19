@@ -56,3 +56,11 @@ SELECT
 FROM leave_request lr
 GROUP BY mois, lr.leave_type
 ORDER BY mois;
+
+
+--56. Détecte les doublons d’nom parmi les employés.
+SELECT last_name COUNT(*) AS occurrences
+FROM employee
+GROUP BY last_name
+HAVING COUNT(*) > 1;
+
