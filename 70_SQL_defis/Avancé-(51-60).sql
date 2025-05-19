@@ -34,3 +34,15 @@ JOIN employee e ON pa.employee_id = e.employee_id
 GROUP BY pa.employee_id
 ORDER BY nb_projets DESC
 LIMIT 1;
+
+
+-- 54. Pour chaque employé, calcule l’écart entre son salaire actuel et le plafond de son poste.
+SELECT 
+    e.employee_id,
+    CONCAT(e.first_name, ' ', e.last_name) AS nom_employe,
+    s.salary_amount,
+    jr.max_salary,
+    (jr.max_salary - s.salary_amount) AS ecart
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+JOIN job_role jr ON e.job_role_id = jr.job_role_id;
