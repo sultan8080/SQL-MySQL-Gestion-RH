@@ -58,3 +58,16 @@ SELECT project_id, project_name,
 FROM project
 ORDER BY DATEDIFF(end_date, start_date) DESC
 LIMIT 5;
+
+
+-- 45. Compare les salaires moyens des employés selon leur ancienneté (années depuis la date d’embauche).
+SELECT e.employee_id, e.last_name, 
+       FLOOR(DATEDIFF(NOW(), e.hire_date) / 365) AS anciennete_annees, 
+       AVG(s.salary_amount) AS salaire_moyen
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+GROUP BY e.employee_id, e.last_name, anciennete_annees
+ORDER BY anciennete_annees DESC;
+
+
+
