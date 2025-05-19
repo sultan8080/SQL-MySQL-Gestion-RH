@@ -45,3 +45,16 @@ JOIN employee e ON rc.reviewer_id = e.employee_id
 WHERE rc.total_reviews = (SELECT MAX(total_reviews) FROM review_counts);
 
 
+-- 44. Affiche les 5 projets les plus longs en termes de durée (end_date - start_date).
+SELECT project_id, project_name, 
+       CONCAT(
+           CASE WHEN FLOOR(DATEDIFF(end_date, start_date) / 365) > 0 
+                THEN CONCAT(FLOOR(DATEDIFF(end_date, start_date) / 365), ' années, ') ELSE '' END,
+           CASE WHEN FLOOR((DATEDIFF(end_date, start_date) % 365) / 30) > 0 
+                THEN CONCAT(FLOOR((DATEDIFF(end_date, start_date) % 365) / 30), ' mois, ') ELSE '' END,
+           CASE WHEN DATEDIFF(end_date, start_date) % 30 > 0 
+                THEN CONCAT(DATEDIFF(end_date, start_date) % 30, ' jours') ELSE '' END
+       ) AS duration
+FROM project
+ORDER BY DATEDIFF(end_date, start_date) DESC
+LIMIT 5;
