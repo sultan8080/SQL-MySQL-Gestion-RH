@@ -86,4 +86,12 @@ GROUP BY anciennete_range
 ORDER BY anciennete_range;
 
 
+--59. Quelles formations ont été suivies par le plus grand nombre d’employés?
+SELECT t.title AS nom_formation, COUNT(et.employee_id) AS nombre_participants
+FROM training t
+JOIN employee_training et ON t.training_id = et.training_id
+GROUP BY t.title
+ORDER BY nombre_participants DESC
+LIMIT 5;
+
 
