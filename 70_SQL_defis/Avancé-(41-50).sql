@@ -99,3 +99,18 @@ JOIN employee e ON pa.employee_id = e.employee_id
 JOIN project p ON pa.project_id = p.project_id
 GROUP BY pa.employee_id, pa.project_id
 HAVING total_roles > 1;
+
+
+-- 50. Calcule, pour chaque poste, le taux d’employés formés à au moins une formation liée.
+SELECT jr.job_role_id, jr.title, 
+       COUNT(DISTINCT et.employee_id) AS employees_trained,
+       (COUNT(DISTINCT et.employee_id) * 100.0 / 
+        (SELECT COUNT(*) FROM employee e WHERE e.job_role_id = jr.job_role_id)) AS training_rate
+FROM job_role jr
+JOIN training_job_role tjr ON jr.job_role_id = tjr.job_role_id
+JOIN employee_training et ON tjr.training_id = et.training_id
+JOIN employee e ON et.employee_id = e.employee_id
+GROUP BY jr.job_role_id, jr.title
+ORDER BY training_rate DESC;
+
+
