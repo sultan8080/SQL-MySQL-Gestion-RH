@@ -70,4 +70,9 @@ GROUP BY e.employee_id, e.last_name, anciennete_annees
 ORDER BY anciennete_annees DESC;
 
 
+-- 46. Affiche le nombre total d’employés embauchés par année depuis la création de l’entreprise.
+SELECT YEAR(hire_date) AS annee_embauche, COUNT(*) AS total_employes_embauches
+FROM employee
+GROUP BY YEAR(hire_date)
+ORDER BY annee_embauche DESC;
 
