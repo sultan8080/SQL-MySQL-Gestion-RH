@@ -82,3 +82,11 @@ SELECT e.employee_id, e.first_name, e.last_name
 FROM employee e
 LEFT JOIN employee sub ON e.employee_id = sub.manager_id
 WHERE sub.employee_id IS NULL;
+
+
+-- 48. Affiche les employés ayant reçu un bonus supérieur à la moyenne, avec leur note de performance.
+SELECT e.employee_id, e.first_name, e.last_name, s.bonus, pr.performance_score
+FROM employee e
+JOIN salary s ON e.employee_id = s.employee_id
+JOIN performance_review pr ON e.employee_id = pr.employee_id
+WHERE s.bonus > (SELECT AVG(bonus) FROM salary);
