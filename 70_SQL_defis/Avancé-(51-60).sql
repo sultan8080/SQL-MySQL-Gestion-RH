@@ -22,3 +22,15 @@ FROM employee e
 JOIN performance_review pr ON e.employee_id = pr.employee_id
 JOIN training_dates td ON e.employee_id = td.employee_id
 GROUP BY e.employee_id;
+
+
+-- 53. Affiche les employés assignés au plus grand nombre de projets.
+SELECT 
+    pa.employee_id,
+    CONCAT(e.first_name, ' ', e.last_name) AS nom_employe,
+    COUNT(*) AS nb_projets
+FROM project_assignment pa
+JOIN employee e ON pa.employee_id = e.employee_id
+GROUP BY pa.employee_id
+ORDER BY nb_projets DESC
+LIMIT 1;
