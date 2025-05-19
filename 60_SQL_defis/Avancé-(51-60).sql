@@ -48,7 +48,7 @@ JOIN salary s ON e.employee_id = s.employee_id
 JOIN job_role jr ON e.job_role_id = jr.job_role_id;
 
 
---55. Affiche la répartition mensuelle des différents types de congés pris par les employés.
+-- 55. Affiche la répartition mensuelle des différents types de congés pris par les employés.
 SELECT 
     MONTH(lr.start_date) AS mois,
     lr.leave_type,
@@ -58,15 +58,32 @@ GROUP BY mois, lr.leave_type
 ORDER BY mois;
 
 
---56. Détecte les doublons d’nom parmi les employés.
+-- 56. Détecte les doublons d’nom parmi les employés.
 SELECT last_name COUNT(*) AS occurrences
 FROM employee
 GROUP BY last_name
 HAVING COUNT(*) > 1;
 
---57. Affiche la répartition des employés par ville (localisation des départements).
+-- 57. Affiche la répartition des employés par localisation des départements.
 SELECT location, COUNT(employee_id) AS total_employees
 FROM department
 JOIN employee ON department.department_id = employee.department_id
 GROUP BY location
 ORDER BY total_employees DESC;
+
+
+-- 58. Analyser la répartition des employés par ancienneté
+SELECT 
+    CASE 
+        WHEN FLOOR(DATEDIFF(NOW(), e.hire_date) / 365) BETWEEN 0 AND 5 THEN '0-5 ans'
+        WHEN FLOOR(DATEDIFF(NOW(), e.hire_date) / 365) BETWEEN 6 AND 10 THEN '6-10 ans'
+        WHEN FLOOR(DATEDIFF(NOW(), e.hire_date) / 365) BETWEEN 11 AND 15 THEN '11-15 ans'
+        ELSE '16 ans et plus'
+    END AS anciennete_range,
+    COUNT(e.employee_id) AS total_employees
+FROM employee e
+GROUP BY anciennete_range
+ORDER BY anciennete_range;
+
+
+
