@@ -76,3 +76,9 @@ FROM employee
 GROUP BY YEAR(hire_date)
 ORDER BY annee_embauche DESC;
 
+
+-- 47. Liste les managers n’ayant aucun subordonné actuellement.
+SELECT e.employee_id, e.first_name, e.last_name
+FROM employee e
+LEFT JOIN employee sub ON e.employee_id = sub.manager_id
+WHERE sub.employee_id IS NULL;
