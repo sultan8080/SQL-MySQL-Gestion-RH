@@ -95,3 +95,29 @@ ORDER BY nombre_participants DESC
 LIMIT 5;
 
 
+-- 60. Quelle est la corrélation entre la formation des employés, leur implication dans les projets et leurs performances ?
+WITH training_info AS (
+    SELECT et.employee_id, COUNT(DISTINCT et.training_id) AS total_trainings
+    FROM employee_training et
+    GROUP BY et.employee_id
+),
+project_info AS (
+    SELECT pa.employee_id, COUNT(DISTINCT pa.project_id) AS total_projects
+    FROM project_assignment pa
+    GROUP BY pa.employee_id
+),
+performance_info AS (
+    SELECT pr.employee_id, AVG(pr.performance_score) AS avg_performance
+    FROM performance_review pr
+    GROUP BY pr.employee_id
+)
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS nom_employe,
+       COALESCE(ti.total_trainings, 0) AS trainings_completed,
+       COALESCE(pi.total_projects, 0) AS projects_assigned,
+       COALESCE(pi.total_projects / NULLIF(ti.total_trainings, 0), 0) AS project_per_training_ratio,
+       COALESCE(pi.total_projects * avg_performance, 0) AS impact_score
+FROM employee e
+LEFT JOIN training_info ti ON e.employee_id = ti.employee_id
+LEFT JOIN project_info pi ON e.employee_id = pi.employee_id
+LEFT JOIN performance_info pr ON e.employee_id = pr.employee_id
+ORDER BY impact_score DESC;
