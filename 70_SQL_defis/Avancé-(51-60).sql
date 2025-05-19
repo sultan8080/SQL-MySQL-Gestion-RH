@@ -64,3 +64,9 @@ FROM employee
 GROUP BY last_name
 HAVING COUNT(*) > 1;
 
+--57. Affiche la répartition des employés par ville (localisation des départements).
+SELECT location, COUNT(employee_id) AS total_employees
+FROM department
+JOIN employee ON department.department_id = employee.department_id
+GROUP BY location
+ORDER BY total_employees DESC;
