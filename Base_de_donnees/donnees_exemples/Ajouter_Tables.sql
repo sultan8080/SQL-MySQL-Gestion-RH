@@ -63,3 +63,15 @@ SELECT e.employee_id, e.first_name, e.last_name
 FROM employee e
 LEFT JOIN employee_training et ON e.employee_id = et.employee_id
 WHERE et.employee_id IS NULL;
+
+-- création la training_job_role
+CREATE TABLE training_job_role (
+    training_job_role_id INT PRIMARY KEY AUTO_INCREMENT,
+    training_id INT NOT NULL,
+    job_role_id INT NOT NULL,
+    FOREIGN KEY (training_id) REFERENCES training(training_id),
+    FOREIGN KEY (job_role_id) REFERENCES job_role(job_role_id)
+);
+
+SELECT * FROM training_job_role;
+
