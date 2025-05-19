@@ -75,3 +75,25 @@ CREATE TABLE training_job_role (
 
 SELECT * FROM training_job_role;
 
+-- Insertion de données dans la table training_job_role
+INSERT INTO training_job_role (training_id, job_role_id) VALUES
+(1, 1), (1, 11), (1, 14),
+(2, 5), (2, 12), (2, 17),
+(3, 3), (3, 13), (3, 18),
+(4, 4), (4, 15), (4, 8),
+(5, 6), (5, 10), (5, 19),
+(6, 2), (6, 18), (6, 23),
+(7, 7), (7, 9), (7, 21),
+(8, 7), (8, 22), (8, 21),
+(9, 9), (9, 14), (9, 10),
+(10, 10), (10, 19), (10, 20);
+
+-- Training relevance their job role
+CREATE TABLE training_job_role (
+    training_job_role_id INT PRIMARY KEY AUTO_INCREMENT,
+    training_id INT NOT NULL,
+    job_role_id INT NOT NULL,
+    FOREIGN KEY (training_id) REFERENCES training(training_id),
+    FOREIGN KEY (job_role_id) REFERENCES job_role(job_role_id)
+);
+
