@@ -90,3 +90,12 @@ FROM employee e
 JOIN salary s ON e.employee_id = s.employee_id
 JOIN performance_review pr ON e.employee_id = pr.employee_id
 WHERE s.bonus > (SELECT AVG(bonus) FROM salary);
+
+
+-- 49. Détecte les projets où un employé est affecté à plusieurs rôles en même temps.
+SELECT pa.employee_id, e.first_name, e.last_name, pa.project_id, p.project_name, COUNT(DISTINCT pa.role_in_project) AS total_roles
+FROM project_assignment pa
+JOIN employee e ON pa.employee_id = e.employee_id
+JOIN project p ON pa.project_id = p.project_id
+GROUP BY pa.employee_id, pa.project_id
+HAVING total_roles > 1;
