@@ -22,9 +22,7 @@ Ce dépôt propose **60 Défis SQL** classés par niveau, ainsi que toute la str
 - Explorer des requêtes de sélection, d’agrégation, de jointures complexes, de sous-requêtes, de fonctions analytiques, etc.
 - Renforcer les compétences de modélisation de données.
 
-
 ### Niveaux de difficulté
-
 ### Débutant (1-10 défis)
 - Sélection simple
 - Filtres avec `WHERE`
@@ -56,6 +54,6 @@ Ce dépôt propose **60 Défis SQL** classés par niveau, ainsi que toute la str
    git clone https://github.com/sultan8080/sql-gestion-rh.git
    cd sql-gestion-rh
 
-Une fois le projet installé, vous pouvez importer la base de données à partir du fichier suivant :
-```bash
+Une fois le projet installé, vous pouvez importer la base de données complète à partir du fichier suivant :
 base_de_donnee/complete_gestion_rh.sql
+
